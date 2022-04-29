@@ -1,24 +1,37 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "module": "ESNext",
-    "target": "es2016",
-    "lib": ["DOM", "ESNext"],
-    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "declaration": false,
+    "declarationMap": false,
     "esModuleInterop": true,
-    "incremental": false,
-    "skipLibCheck": true,
+    "exactOptionalPropertyTypes": true,
+    "importsNotUsedAsValues": "error",
+    "module": "esnext",
     "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "pretty": true,
     "resolveJsonModule": true,
-    "noUnusedLocals": true,
-    "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "esnext",
     "types": [
-      "vite/client",
-      "vue/ref-macros",
-      "vite-plugin-pages/client",
-      "vite-plugin-vue-layouts/client"
+      "node"
     ],
+    "useDefineForClassFields": true,
+    "useUnknownInCatchVariables": true,
+    "lib": ["esnext", "dom"],
+
+    // This defines paths used by alias-hq
+    "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"]
     }

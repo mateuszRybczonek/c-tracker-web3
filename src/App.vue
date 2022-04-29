@@ -1,15 +1,40 @@
-<script setup lang="ts">
-// https://github.com/vueuse/head
-// you can use this to manipulate the document head in any components,
-// they will be rendered correctly in the html results with vite-ssg
-useHead({
-  title: 'Vitesse',
-  meta: [
-    { name: 'description', content: 'Opinionated Vite Starter Template' },
-  ],
-})
-</script>
-
 <template>
   <router-view />
+  <BusyOverlay ref="busyOverlay" />
+  <BaseAlert />
 </template>
+
+<script setup lang="ts">
+import { useHead } from '@vueuse/head'
+import { ref, onMounted, onUnmounted } from 'vue'
+import BaseAlert from '~/components/BaseAlert.vue'
+import BusyOverlay from '~/components/BusyOverlay.vue'
+import type BusyOverlayExports from '~/types/BusyOverlayExports'
+import type { ShowBusyStateNotificationObject } from '~/utils/notifications'
+import { addObserver, ENotification, removeObserver } from '~/utils/notifications'
+
+useHead({
+  title: 'C-Tracker Web3',
+  meta: [{ name: 'description', content: 'C-Tracker Web3' }]
+})
+
+const busyOverlay = ref<BusyOverlayExports>()
+
+function showBusyOverlay(object?: ShowBusyStateNotificationObject): void {
+  busyOverlay.value?.show(object)
+}
+
+function hideBusyOverlay(): void {
+  busyOverlay.value?.hide()
+}
+
+onMounted(() => {
+  addObserver(ENotification.showBusyState, showBusyOverlay)
+  addObserver(ENotification.hideBusyState, hideBusyOverlay)
+})
+
+onUnmounted(() => {
+  removeObserver(ENotification.showBusyState, showBusyOverlay)
+  removeObserver(ENotification.hideBusyState, hideBusyOverlay)
+})
+</script>

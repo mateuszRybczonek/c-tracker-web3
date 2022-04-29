@@ -13,6 +13,7 @@ import Inspect from 'vite-plugin-inspect'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
+import svgLoader from 'vite-svg-loader'
 
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 
@@ -28,6 +29,8 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/],
       reactivityTransform: true,
     }),
+
+    svgLoader({ svgo: false }),
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
@@ -127,14 +130,5 @@ export default defineConfig({
     script: 'async',
     formatting: 'minify',
     onFinished() { generateSitemap() },
-  },
-
-  // https://github.com/vitest-dev/vitest
-  test: {
-    include: ['test/**/*.test.ts'],
-    environment: 'jsdom',
-    deps: {
-      inline: ['@vue', '@vueuse', 'vue-demi'],
-    },
   },
 })

@@ -4,9 +4,20 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Counter: typeof import('./components/Counter.vue')['default']
-    Footer: typeof import('./components/Footer.vue')['default']
-    README: typeof import('./components/README.md')['default']
+    AddNewCertificateModal: typeof import('./components/certificates/AddNewCertificateModal.vue')['default']
+    BaseAlert: typeof import('./components/BaseAlert.vue')['default']
+    BaseButton: typeof import('./components/BaseButton.vue')['default']
+    BaseInput: typeof import('./components/BaseInput.vue')['default']
+    BaseModal: typeof import('./components/BaseModal.vue')['default']
+    BaseToggle: typeof import('./components/BaseToggle.vue')['default']
+    BusyOverlay: typeof import('./components/BusyOverlay.vue')['default']
+    CategorySelect: typeof import('./components/CategorySelect.vue')['default']
+    CertificatesList: typeof import('./components/certificates/CertificatesList.vue')['default']
+    CertificatesListItem: typeof import('./components/certificates/CertificatesListItem.vue')['default']
+    CircleSpinner: typeof import('./components/CircleSpinner.vue')['default']
+    DashboardOverview: typeof import('./components/DashboardOverview.vue')['default']
+    EmptyCollection: typeof import('./components/EmptyCollection.vue')['default']
+    Loader: typeof import('./components/Loader.vue')['default']
   }
 }
 
